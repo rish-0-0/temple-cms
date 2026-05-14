@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "post_images",
+  "info": {
+    "singularName": "post-image",
+    "pluralName": "post-images",
+    "displayName": "Post Images"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "caption": {
+      "type": "text"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "temple_post": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::temple-post.temple-post",
+      "inversedBy": "post_images"
+    }
+  }
+}
