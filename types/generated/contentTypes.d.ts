@@ -618,7 +618,7 @@ export interface ApiTemplePostTemplePost extends Struct.CollectionTypeSchema {
   };
   attributes: {
     author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
-    body: Schema.Attribute.Text &
+    body: Schema.Attribute.RichText &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

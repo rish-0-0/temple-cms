@@ -24,14 +24,6 @@
       },
       "required": true
     },
-    "body": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "temple_name": {
       "type": "string",
       "pluginOptions": {
@@ -161,6 +153,15 @@
       "relation": "oneToMany",
       "target": "api::post-image.post-image",
       "mappedBy": "temple_post"
+    },
+    "body": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": false
     }
   }
 }
