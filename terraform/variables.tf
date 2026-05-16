@@ -5,7 +5,7 @@ variable "project" {
 
 variable "location" {
   type    = string
-  default = "centralindia"
+  default = "southeastasia"
 }
 
 variable "custom_hostname" {
