@@ -1,0 +1,17 @@
+node_modules
+.tmp
+.cache
+build
+dist
+.env
+.env.*
+.git
+.gitignore
+.github
+*.md
+types
+*.db
+*.sqlite
+*.sqlite3
+.vscode
+.idea
