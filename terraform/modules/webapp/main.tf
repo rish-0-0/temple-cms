@@ -32,6 +32,20 @@ resource "azurerm_linux_web_app" "this" {
   }
 
   app_settings = var.app_settings
+
+  logs {
+    application_logs {
+      file_system_level = "Verbose"
+    }
+    http_logs {
+      file_system {
+        retention_in_days = 7
+        retention_in_mb   = 35
+      }
+    }
+    detailed_error_messages = true
+    failed_request_tracing  = true
+  }
 }
 
 # Allow the Web App's managed identity to read Key Vault secrets.
