@@ -24,7 +24,7 @@ resource "azurerm_linux_web_app" "this" {
     container_registry_use_managed_identity = false
 
     application_stack {
-      docker_image_name        = split("/", var.image)[length(split("/", var.image)) - 1]
+      docker_image_name        = join("/", slice(split("/", var.image), 1, length(split("/", var.image))))
       docker_registry_url      = "https://ghcr.io"
       docker_registry_username = var.ghcr_username
       docker_registry_password = var.ghcr_token
