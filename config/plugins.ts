@@ -7,14 +7,11 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
     'strapi-plugin-sso': {
       enabled: true,
       config: {
-        MICROSOFT: {
-          ENABLE: true,
-          CLIENT_ID: env('MICROSOFT_CLIENT_ID', ''),
-          CLIENT_SECRET: env('MICROSOFT_CLIENT_SECRET', ''),
-          TENANT: env('MICROSOFT_TENANT_ID', 'common'),
-          SCOPE: ['openid', 'email', 'profile'],
-          CALLBACK_URL: '/api/connect/microsoft/callback',
-        },
+        AZUREAD_OAUTH_REDIRECT_URI: 'https://cms.sibani-panigrahy.com/strapi-plugin-sso/azuread/callback',
+        AZUREAD_TENANT_ID: env('MICROSOFT_TENANT_ID', ''),
+        AZUREAD_OAUTH_CLIENT_ID: env('MICROSOFT_CLIENT_ID', ''),
+        AZUREAD_OAUTH_CLIENT_SECRET: env('MICROSOFT_CLIENT_SECRET', ''),
+        AZUREAD_SCOPE: 'user.read',
       },
     },
   };
