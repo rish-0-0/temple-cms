@@ -61,3 +61,18 @@ variable "strapi_encryption_key" {
   type      = string
   sensitive = true
 }
+
+variable "entra_tenant_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "entra_client_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "entra_client_secret" {
+  type      = string
+  sensitive = true
+}

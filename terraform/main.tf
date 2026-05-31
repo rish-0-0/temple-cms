@@ -50,15 +50,18 @@ module "keyvault" {
   tenant_id              = data.azurerm_client_config.current.tenant_id
   terraform_principal_id = data.azurerm_client_config.current.object_id
   secrets = {
-    "APP-KEYS"            = var.strapi_app_keys
-    "API-TOKEN-SALT"      = var.strapi_api_token_salt
-    "ADMIN-JWT-SECRET"    = var.strapi_admin_jwt_secret
-    "TRANSFER-TOKEN-SALT" = var.strapi_transfer_token_salt
-    "JWT-SECRET"          = var.strapi_jwt_secret
-    "ENCRYPTION-KEY"      = var.strapi_encryption_key
-    "POSTGRES-PASSWORD"   = random_password.postgres_admin.result
-    "GHCR-TOKEN"          = var.ghcr_token
-    "STORAGE-ACCOUNT-KEY" = module.storage.primary_access_key
+    "APP-KEYS"                = var.strapi_app_keys
+    "API-TOKEN-SALT"          = var.strapi_api_token_salt
+    "ADMIN-JWT-SECRET"        = var.strapi_admin_jwt_secret
+    "TRANSFER-TOKEN-SALT"     = var.strapi_transfer_token_salt
+    "JWT-SECRET"              = var.strapi_jwt_secret
+    "ENCRYPTION-KEY"          = var.strapi_encryption_key
+    "POSTGRES-PASSWORD"       = random_password.postgres_admin.result
+    "GHCR-TOKEN"              = var.ghcr_token
+    "STORAGE-ACCOUNT-KEY"     = module.storage.primary_access_key
+    "MICROSOFT-TENANT-ID"     = var.entra_tenant_id
+    "MICROSOFT-CLIENT-ID"     = var.entra_client_id
+    "MICROSOFT-CLIENT-SECRET" = var.entra_client_secret
   }
 }
 
@@ -99,6 +102,10 @@ module "webapp" {
     STORAGE_CONTAINER_NAME = module.storage.container_name
     STORAGE_URL            = module.storage.primary_blob_endpoint
     STORAGE_ACCOUNT_KEY    = "@Microsoft.KeyVault(SecretUri=${module.keyvault.secret_uris["STORAGE-ACCOUNT-KEY"]})"
+
+    MICROSOFT_TENANT_ID     = "@Microsoft.KeyVault(SecretUri=${module.keyvault.secret_uris["MICROSOFT-TENANT-ID"]})"
+    MICROSOFT_CLIENT_ID     = "@Microsoft.KeyVault(SecretUri=${module.keyvault.secret_uris["MICROSOFT-CLIENT-ID"]})"
+    MICROSOFT_CLIENT_SECRET = "@Microsoft.KeyVault(SecretUri=${module.keyvault.secret_uris["MICROSOFT-CLIENT-SECRET"]})"
   }
 }
 
