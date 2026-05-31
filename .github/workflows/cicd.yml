@@ -95,6 +95,9 @@ jobs:
       TF_VAR_strapi_transfer_token_salt:  ${{ secrets.STRAPI_TRANSFER_TOKEN_SALT }}
       TF_VAR_strapi_jwt_secret:           ${{ secrets.STRAPI_JWT_SECRET }}
       TF_VAR_strapi_encryption_key:       ${{ secrets.STRAPI_ENCRYPTION_KEY }}
+      TF_VAR_entra_tenant_id:             ${{ secrets.ENTRA_TENANT_ID }}
+      TF_VAR_entra_client_id:             ${{ secrets.ENTRA_CLIENT_ID }}
+      TF_VAR_entra_client_secret:         ${{ secrets.ENTRA_CLIENT_SECRET }}
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
@@ -171,6 +174,9 @@ jobs:
       TF_VAR_strapi_transfer_token_salt:  ${{ secrets.STRAPI_TRANSFER_TOKEN_SALT }}
       TF_VAR_strapi_jwt_secret:           ${{ secrets.STRAPI_JWT_SECRET }}
       TF_VAR_strapi_encryption_key:       ${{ secrets.STRAPI_ENCRYPTION_KEY }}
+      TF_VAR_entra_tenant_id:             ${{ secrets.ENTRA_TENANT_ID }}
+      TF_VAR_entra_client_id:             ${{ secrets.ENTRA_CLIENT_ID }}
+      TF_VAR_entra_client_secret:         ${{ secrets.ENTRA_CLIENT_SECRET }}
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
